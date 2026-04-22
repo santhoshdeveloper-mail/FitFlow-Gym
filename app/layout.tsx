@@ -1,10 +1,18 @@
-// app/layout.tsx  (replace the body part)
+// app/layout.tsx
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ["latin"] });
 
+export const metadata: Metadata = {
+  title: "FitFlow - Premium Gym Experience",
+  description: "Join Chennai's most modern fitness gym. Train better. Live stronger.",
+  icons: {
+    icon: "/dummbell.jpg",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -12,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body className="antialiased">
+    <html lang="en">
+      <body className={inter.className}>
         <Navbar />
         {children}
       </body>
